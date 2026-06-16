@@ -159,11 +159,11 @@
                         <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Ustazah Pengampu / Penyimak</label>
                         <select id="guru" required class="w-full px-3 py-2 border border-slate-200 rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm transition">
                             <option value="" disabled selected hidden>Pilih nama ustazah di sini...</option>
-                            <option value="Ustadz M.Auris">Ustadz M.Auris</option>
-                            <option value="Ustazah Ayu Umairoh">Ustazah Ayu Umairoh</option>
-                            <option value="Ustazah Ayuniz Zakia">Ustazah Ayuniz Zakia</option>
-                            <option value="Ustazah Rima Niswa">Ustazah Rima Niswa</option>
-                            <option value="Ustazah Durotun Nafisah">Ustazah Durotun Nafisah</option>
+                            <option value="Ustadz M.Auris (085706399238)">Ustadz M.Auris</option>
+                            <option value="Ustazah Ayu Umairoh (087876811875)">Ustazah Ayu Umairoh</option>
+                            <option value="Ustazah Ayuniz Zakia (088980327874)">Ustazah Ayuniz Zakia</option>
+                            <option value="Ustazah Rima Niswa (085178908763)">Ustazah Rima Niswa</option>
+                            <option value="Ustazah Durotun Nafisah (085790441189)">Ustazah Durotun Nafisah</option>
                         </select>
                     </div>
 
@@ -225,11 +225,11 @@
                         <div>
                             <select id="filterGuru" class="w-full px-3 py-2 border border-slate-200 rounded-xl text-xs bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
                                 <option value="">Semua Ustazah</option>
-                                <option value="Ustadz Auris">Ustadz Auris</option>
-                                <option value="Ustazah Ayu Umairoh">Ustazah Ayu Umairoh</option>
-                                <option value="Ustazah Ayuniz Zakia">Ustazah Ayuniz Zakia</option>
-                                <option value="Ustazah Rima Niswa">Ustazah Rima Niswa</option>
-                                <option value="Ustazah Durotun Nafisah">Ustazah Durotun Nafisah</option>
+                                <option value="Ustadz Auris (085706399238)">Ustadz Auris (085706399238)</option>
+                                <option value="Ustazah Ayu Umairoh (087876811875)">Ustazah Ayu Umairoh (087876811875)</option>
+                                <option value="Ustazah Ayuniz Zakia">Ustazah Ayuniz Zakia(088980327874)</option>
+                                <option value="Ustazah Rima Niswa">Ustazah Rima Niswa (085178908763)</option>
+                                <option value="Ustazah Durotun Nafisah">Ustazah Durotun Nafisah(085790441189)</option>
                             </select>
                         </div>
                     </div>
@@ -746,7 +746,17 @@
                     lineColor: [226, 232, 240], 
                     lineWidth: 0.1,
                     overflow: 'linebreak' 
-                }
+                ,
+                didParseCell: function(data) {
+                    if (data.section === 'body') {
+                        const cellValue = data.cell.text.join(' ').trim();
+                        if (cellValue === 'Dauroh Tasmik') {
+                            data.cell.styles.fillColor = [126, 34, 206]; 
+                            data.cell.styles.textColor = [255, 255, 255]; 
+                            data.cell.styles.fontStyle = 'bold';
+                        }
+                    }
+                }}
             });
 
             const fileOutputName = `Rekap_Hafalan_${labelUstazah.replace(/\s+/g, '_')}.pdf`;
