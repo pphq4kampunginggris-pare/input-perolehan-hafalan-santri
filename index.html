@@ -746,16 +746,6 @@
                     lineColor: [226, 232, 240], 
                     lineWidth: 0.1,
                     overflow: 'linebreak' 
-                },
-                didParseCell: function(data) {
-                    if (data.section === 'body') {
-                        const cellValue = data.cell.text.join(' ').trim();
-                        if (cellValue === 'Dauroh Tasmik') {
-                            data.cell.styles.fillColor = [126, 34, 206]; 
-                            data.cell.styles.textColor = [255, 255, 255]; 
-                            data.cell.styles.fontStyle = 'bold';
-                        }
-                    }
                 }
             });
 
