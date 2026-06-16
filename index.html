@@ -159,6 +159,7 @@
                         <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Ustazah Pengampu / Penyimak</label>
                         <select id="guru" required class="w-full px-3 py-2 border border-slate-200 rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm transition">
                             <option value="" disabled selected hidden>Pilih nama ustazah di sini...</option>
+                            <option value="Ustadz M.Auris">Ustadz M.Auris</option>
                             <option value="Ustazah Ayu Umairoh">Ustazah Ayu Umairoh</option>
                             <option value="Ustazah Ayuniz Zakia">Ustazah Ayuniz Zakia</option>
                             <option value="Ustazah Rima Niswa">Ustazah Rima Niswa</option>
@@ -224,6 +225,7 @@
                         <div>
                             <select id="filterGuru" class="w-full px-3 py-2 border border-slate-200 rounded-xl text-xs bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
                                 <option value="">Semua Ustazah</option>
+                                <option value="Ustadz Auris">Ustadz Auris</option>
                                 <option value="Ustazah Ayu Umairoh">Ustazah Ayu Umairoh</option>
                                 <option value="Ustazah Ayuniz Zakia">Ustazah Ayuniz Zakia</option>
                                 <option value="Ustazah Rima Niswa">Ustazah Rima Niswa</option>
@@ -242,7 +244,7 @@
                                     <th class="py-3 px-2 font-bold text-left">Kategori Santri</th>
                                     <th class="py-3 px-2 font-bold">Setoran Awal</th>
                                     <th class="py-3 px-2 font-bold">Setoran Akhir</th>
-                                    <th class="py-3 px-2 text-center font-bold">Minggu Ini & Target</th>
+                                    <th class="py-3 px-2 text-center font-bold">Target Mingguan</th>
                                     <th class="py-3 px-2 text-center font-bold">Pencapaian</th>
                                     <th class="py-3 px-2 text-center font-bold">Total</th>
                                     <th class="py-3 px-2 text-center font-bold">Terakhir Tasmik</th>
@@ -692,7 +694,7 @@
             }
 
             doc.setFont("Helvetica", "bold");
-            doc.text("Ustazah Pengampu: " + labelUstazah, 15, 46);
+            doc.text("Ustadz/Ustazah Pengampu: " + labelUstazah, 15, 46);
 
             // Petakan data untuk PDF Table (Nama dan Kategori diatur rata kiri)
             const bodyData = filteredData.map((item, idx) => [
@@ -712,7 +714,7 @@
 
             doc.autoTable({
                 startY: 50,
-                head: [['No', 'Nama Santri', 'Kategori Santri', 'Setoran Awal', 'Setoran Akhir', 'Perolehan', 'Target', 'Pencapaian', 'Total', 'Terakhir Tasmik', 'Status', 'Ustazah']],
+                head: [['No', 'Nama Santri', 'Kategori Santri', 'Setoran Awal', 'Setoran Akhir', 'Perolehan', 'Target  Mingguan', 'Keterangan', 'Total Hafalan', 'Terakhir Tasmik', 'Status', 'Ustazah']],
                 body: bodyData,
                 theme: 'striped',
                 headStyles: { 
@@ -726,11 +728,11 @@
                     0: { halign: 'center', cellWidth: 8 },
                     1: { halign: 'left', fontStyle: 'bold', cellWidth: 32 }, // Rata Kiri Nama Santri
                     2: { halign: 'left', cellWidth: 26 }, // Rata Kiri Kategori Santri
-                    3: { halign: 'left', cellWidth: 16 },
-                    4: { halign: 'left', cellWidth: 16 },
+                    3: { halign: 'left', cellWidth: 18 },
+                    4: { halign: 'left', cellWidth: 18 },
                     5: { halign: 'center', cellWidth: 20 },
-                    6: { halign: 'center', cellWidth: 16 },
-                    7: { halign: 'center', fontStyle: 'bold', cellWidth: 22 },
+                    6: { halign: 'center', cellWidth: 20 },
+                    7: { halign: 'left', fontStyle: 'bold', cellWidth: 22 },
                     8: { halign: 'center', fontStyle: 'bold', cellWidth: 20 },
                     9: { halign: 'center', cellWidth: 24 }, // Kolom Terakhir Tasmik
                     10: { halign: 'center', cellWidth: 22 },
